@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap');
+
+body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#FFECD7;
+}
+
+ul {
+  padding-left: 0;
+  list-style-position: inside; /* Pulls the dots into the text box */
+}
+
+
+.card{
+      width:350px;
+      background:#375fff;
+      border:4px solid #91E4FB ;
+      border-radius:30px;
+      padding:25px;
+      text-align:center;
+      color:white;
+}
+
+.title{
+      font-size:50px;
+      margin:0;
+      font-weight:300;
+      color:#FFFFFF;
+      font-family: Jim Nightshade;
+}
+
+.subtitle{
+      font-size:16px;
+      color:#91E4FB;
+      margin-top:5px;
+      margin-bottom:20px;
+      line-height:1.4;
+    }
+
+.subtitle a{
+      color:#91E4FB;
+      text-decoration:none;
+    }
+
+.profile-img{
+      border:5px solid white;
+    }
+
+.info-list{
+      text-align:center;
+      font-size:18px;
+      line-height:1.5;
+      margin-bottom:25px;
+}
+
+.quote{
+      color:#FFD783;
+      font-family:"Brush Script MT", cursive;
+      font-size:18px;
+      line-height:1.3;
+      text-align:center;
+}
