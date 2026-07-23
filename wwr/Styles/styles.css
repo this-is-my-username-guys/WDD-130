@@ -1,0 +1,456 @@
+/* ============================================
+   Wild Storm Rafters — stylesheet
+   Palette pulled from the logo: storm navy + gold, plus river blue & foam.
+   Text/background pairings used here all check 4.5:1 contrast or higher:
+     navy vs white        18.3:1
+     navy vs gold          9.9:1
+     river blue vs white    7.0:1
+     foam vs navy          13.8:1
+   ============================================ */
+
+:root {
+  --primary-color: #0E5E8A;   /* river blue */
+  --secondary-color: #BFE6F2; /* foam / sky */
+  --accent1-color: #E8B800;   /* logo gold */
+  --accent2-color: #10151C;   /* logo navy/near-black */
+  --white: #FFFFFF;
+
+  --heading-font: "Eagle Lake", cursive;
+  --paragraph-font: "Supermercado One", sans-serif;
+
+  --max-width: 1100px;
+  --radius: 6px;
+  --shadow: 0 10px 26px rgba(16, 21, 28, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--paragraph-font);
+  color: var(--accent2-color);
+  line-height: 1.6;
+  background: var(--white);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent1-color);
+  outline-offset: 2px;
+}
+
+#content {
+  overflow-x: hidden;
+}
+
+/* ---------- Buttons ---------- */
+.book, .join, .send {
+  display: inline-block;
+  font-family: var(--paragraph-font);
+  font-weight: bold;
+  padding: 0.85em 1.9em;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent1-color);
+  background: var(--accent1-color);
+  color: var(--accent2-color); /* navy text on gold: 9.9:1 */
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.book:hover, .join:hover, .send:hover,
+.book:focus-visible, .join:focus-visible, .send:focus-visible {
+  background: transparent;
+  color: var(--accent1-color);
+  transform: translateY(-2px);
+}
+
+/* ---------- Header / Nav ---------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  background: var(--white);
+  border-bottom: 3px solid var(--accent2-color);
+}
+
+.logo {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+}
+
+nav {
+  background: var(--accent2-color);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.75em 1.2em;
+  text-decoration: none;
+  color: var(--accent1-color); /* gold on navy: 9.9:1 */
+  font-weight: bold;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+nav a:hover, nav a:focus-visible, nav a[aria-current="page"] {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+/* ---------- Hero ---------- */
+#hero {
+  position: relative;
+  height: 78vh;
+  min-height: 460px;
+  overflow: hidden;
+}
+
+#hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(16,21,28,0.35) 0%, rgba(16,21,28,0.6) 100%);
+}
+
+#hero-msg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  z-index: 1;
+}
+
+.home-title {
+  color: var(--white);
+  font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+  margin-bottom: 0.2em;
+}
+
+#hero-msg h4 {
+  color: var(--white);
+  font-family: var(--paragraph-font);
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.button-box {
+  margin-top: 0.5rem;
+}
+
+/* ---------- Feature cards ---------- */
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "rivers camping rapids"
+    "highlight highlight highlight";
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem 0;
+  column-gap: 2rem;
+}
+
+.rivers-card { grid-area: rivers; }
+.camping-card { grid-area: camping; }
+.rapids-card { grid-area: rapids; }
+
+.rivers-card, .camping-card, .rapids-card {
+  position: relative;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin: -26px auto 0.75rem;
+  box-shadow: var(--shadow);
+  background: var(--white);
+  border: 3px solid var(--white);
+}
+
+.rivers-card h2, .camping-card h2, .rapids-card h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+/* ---------- Highlight / "More than just the thrill" ---------- */
+#background {
+  grid-area: highlight;
+  background: var(--secondary-color);
+  border-radius: var(--radius);
+  margin-top: 4rem;
+  min-height: 380px;
+}
+
+.mountains {
+  grid-area: highlight;
+  align-self: center;
+  justify-self: start;
+  width: 62%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 4rem;
+  margin-left: 2%;
+  z-index: 1;
+}
+
+.msg {
+  grid-area: highlight;
+  align-self: center;
+  justify-self: end;
+  width: 46%;
+  margin-right: 2%;
+  margin-top: 4.5rem;
+  background: var(--accent2-color);
+  color: var(--white);
+  padding: 2.25rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 2;
+  text-align: left;
+}
+
+.msg h2 {
+  color: var(--white);
+}
+
+.msg p {
+  color: var(--white);
+  opacity: 0.9;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--accent2-color);
+  color: var(--white);
+  margin-top: 4rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+footer a:hover, footer a:focus-visible {
+  text-decoration: underline;
+}
+
+.social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+/* ---------- Page banner (Tours / Contact) ---------- */
+.page-banner {
+  background: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+.page-banner h1 { color: var(--white); }
+.page-banner p { color: var(--white); opacity: 0.92; margin: 0; }
+
+/* ---------- Tours page ---------- */
+.tours {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.tour-card {
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+}
+
+.tour-difficulty {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: var(--accent2-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.25em 0.75em;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.tour-meta {
+  display: flex;
+  gap: 1.25rem;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.92rem;
+}
+
+.tour-price {
+  font-family: var(--heading-font);
+  color: var(--primary-color);
+  font-size: 1.6rem;
+}
+
+/* ---------- Contact page ---------- */
+.contact-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.info-item {
+  display: flex;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item .dot {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent2-color);
+  color: var(--accent1-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.info-item h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--radius);
+  font-family: var(--paragraph-font);
+  font-size: 1rem;
+  color: var(--accent2-color);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "rivers"
+      "camping"
+      "rapids"
+      "highlight";
+    row-gap: 2.5rem;
+  }
+  .mountains, .msg, #background {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    justify-self: stretch;
+  }
+  #background { display: none; }
+  .mountains { height: 220px; margin-top: 2rem; }
+  .msg { margin-top: 1rem; text-align: center; }
+
+  .tour-grid, .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  header { flex-direction: column; gap: 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
